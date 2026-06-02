@@ -6,11 +6,20 @@ int main() {
     /* alternatively, load a heap image */
     // vmload("tests/img/many_free.img");
 
-    void *ptr = vmalloc(16);
+    void *p1 = vmalloc(20);
+    void *p2 = vmalloc(40);
 
-    vminfo(); // print out how the heap looks like at this point in time for
-              // easy visualization
+    vminfo();
 
-    vmdestroy(); // frees all memory allocated by vminit() or vmload()
+    vmfree(p1);
+
+    vminfo();
+
+    vmfree(p2);
+
+    vminfo();
+
+    vmdestroy();
+
     return 0;
 }
